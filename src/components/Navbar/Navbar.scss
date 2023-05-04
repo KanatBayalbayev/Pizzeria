@@ -1,0 +1,17 @@
+nav {
+  padding: 15px 75px;
+  border: 1px solid black;
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      margin-right: 30px;
+      .link {
+        text-decoration: none;
+      }
+      .active {
+        color: orangered;
+      }
+    }
+  }
+}
