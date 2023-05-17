@@ -12,9 +12,9 @@ const Menu = () => {
       <Pizza />
       <Combo />
       <Snacks />
-      <Desserts />
+      {/* <Desserts />
       <Drinks />
-      <OtherProducts />
+      <OtherProducts /> */}
     </>
   );
 };

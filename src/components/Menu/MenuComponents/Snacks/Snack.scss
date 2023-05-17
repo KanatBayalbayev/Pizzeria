@@ -1,0 +1,23 @@
+.snack-container {
+  display: grid;
+  padding: 50px 30px;
+  grid-template-columns: auto auto auto;
+  gap: 30px;
+  .item-card {
+    border: 1px solid black;
+    img {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    h4 {
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

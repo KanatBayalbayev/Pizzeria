@@ -1,120 +1,63 @@
 import React from "react";
-import './Pizza.scss'
-import pizza from '../../../../assets/pics/pizza-graphic-clipart-design-free-png.webp'
+import "./Pizza.scss";
+import foodItems from "../../../../assets/menuItems/menuItems";
+import { useDispatch } from "react-redux";
+import modalActions from "../../../stateStore/itemModal";
 
+let pizzaItems = "";
+for (let foodItem in foodItems) {
+  if (foodItem === "pizza") {
+    pizzaItems = foodItems[foodItem];
+  }
+}
 
 const Pizza = () => {
+  const dispatch = useDispatch();
+  const showModalHandler = (
+    idItem,
+    pizzaItems,
+    nameItem,
+    descriptionItem,
+    priceItem
+  ) => {
+    dispatch(modalActions.actions.showModal());
+    dispatch(
+      modalActions.actions.addItemToModal({
+        id: idItem,
+        pizzas: pizzaItems,
+        name: nameItem,
+        description: descriptionItem,
+        price: priceItem,
+      })
+    );
+  };
+
   return (
-    <section className="pizza-container">
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
+    <div className="pizza-container">
+      {pizzaItems.map((pizza) => (
+        <div className="item-card" key={pizza.id}>
+          <img src={pizza.pizzas.medium.img} alt="img" />
+          <h4>{pizza.name}</h4>
+          <p>{pizza.description}</p>
+          <div>
+            <p>от {pizza.pizzas.medium.price} тг.</p>
+            <button
+              onClick={() =>
+                showModalHandler(
+                  pizza.id,
+                  pizza.pizzas,
+                  pizza.name,
+                  pizza.description,
+                  pizza.price
+                )
+              }
+            >
+              Собрать
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-      <div className="item-card">
-        <img src={pizza} alt="" />
-        <h4>Пицца из половинок</h4>
-        <p>Соберите свою пиццу 35 см с двумя разными вкусами</p>
-        <div>
-          <p>от 3 600 тг.</p>
-          <button>Собрать</button>
-        </div>
-      </div>
-    </section>
+      ))}
+    </div>
   );
 };
 
